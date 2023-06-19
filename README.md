@@ -8,3 +8,17 @@ This TypeScript function, isPersonalBest, highlights my ability to write clean, 
 The logic within the function shows how I handle calculations and conditional checks. It checks against the current set summary (if available), and calculates the 1RM and volume for comparison, showcasing my problem-solving skills and attention to detail.
 
 The code is also properly documented with comments that describe its functionality, enhancing readability and understanding for other developers. This approach reflects my commitment to effective communication in code and highlights how I design functions with maintainability and collaboration in mind.
+
+### SetProvider
+
+This code sample is a React Context Provider, SetProvider, written in TypeScript, that manages the state for a set of exercise data in a workout application. It demonstrates my ability to create scalable and maintainable state management solutions using React's Context API.
+
+The SetProvider uses both built-in React hooks like useState, useEffect, and useRef, as well as a custom hook, useAsyncStorage, showcasing my adeptness with React Hooks and the creation of custom hooks to abstract complex logic.
+
+This code also integrates Apollo Client's useLazyQuery hook, illustrating my ability to work with GraphQL APIs. The fetchSetData function, which combines local data storage and network request, exemplifies my skill in handling asynchronous operations and demonstrates how I implement error handling in such situations.
+
+I employ a helper function safeUpdate to safely update state only when the component is mounted, thereby handling potential errors related to state updates on unmounted components. This function also helps to reduce code repetition, showcasing my focus on clean and DRY code.
+
+In terms of mobile development, this file illustrates my proficiency with React Native and specifically with the Async Storage module for local data storage in a mobile environment.
+
+Overall, this piece of code displays my capabilities in modern React development, efficient state management, GraphQL usage, asynchronous operations, and the creation of maintainable and efficient code.
