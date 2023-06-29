@@ -1,18 +1,12 @@
 import { useLazyQuery } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, {
-  ReactNode,
-  createContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import uuid from "react-native-uuid";
 import { useAsyncStorage } from "../hooks";
 import { GET_SETS_ON_EXERCISE } from "../services/set-on-exercise.service";
 import { Exercise, ExerciseSet } from "../types";
 
-export const SetContext = createContext<{
+export const SetContext = React.createContext<{
   sets: ExerciseSet[];
   loading: boolean;
   error: Error | null;
@@ -38,7 +32,6 @@ interface Props {
   sessionId: string;
 }
 
-// Provider for the SetContext.
 const SetProvider = ({ children, sessionId, exercise }: Props) => {
   const isMountedRef = useRef(false);
   const key = `@TrainerAI:Session:${sessionId}Exercise${exercise.id}:Sets${exercise.uuid}`;
@@ -51,7 +44,6 @@ const SetProvider = ({ children, sessionId, exercise }: Props) => {
     { variables },
   );
 
-  // Ensure that the component is mounted before performing certain operations.
   useEffect(() => {
     isMountedRef.current = true;
     return () => {
@@ -59,31 +51,27 @@ const SetProvider = ({ children, sessionId, exercise }: Props) => {
     };
   }, []);
 
-  // Helper function to perform a safe state update.
-  const safeUpdate = (updateFunc: Function) => (...args: any[]) => {
-    if (isMountedRef.current) {
-      updateFunc(...args);
-    }
+  const addSet = (set: ExerciseSet) => {
+    if (!isMountedRef.current) return;
+    setSets([...sets, set]);
   };
 
-  const addSet = safeUpdate((set: ExerciseSet) => {
-    setSets([...sets, set]);
-  });
-
-  const removeSet = safeUpdate((setId: string) => {
+  const removeSet = (setId: string) => {
+    if (!isMountedRef.current) return;
     setSets((prevSets: ExerciseSet[]) =>
       prevSets.filter(set => set.id !== setId),
     );
-  });
+  };
 
-  const updateSet = safeUpdate((index: number, newSet: ExerciseSet) => {
+  const updateSet = (index: number, newSet: ExerciseSet) => {
+    if (!isMountedRef.current) return;
     const newSets = [...sets];
     newSets[index] = newSet;
     setSets(newSets);
-  });
+  };
 
-  // Fetches set data from storage or network.
   const fetchSetData = async (): Promise<ExerciseSet[]> => {
+    if (!isMountedRef.current) return [];
     setError(null);
     setLoading(true);
     try {
@@ -95,13 +83,11 @@ const SetProvider = ({ children, sessionId, exercise }: Props) => {
         ...set,
         id: uuid.v4(),
       }));
-      safeUpdate(setSets)(setsWithIds ?? []);
+      setSets(setsWithIds ?? []);
       setLoading(false);
       return setsWithIds ?? [];
     } catch (err) {
-      if (err instanceof Error) {
-        safeUpdate(setError)(err);
-      }
+      setError(err as Error);
       setLoading(false);
       return [];
     }
