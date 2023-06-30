@@ -17,7 +17,7 @@ The logic within the function shows how I handle calculations and conditional ch
 
 The code is also properly documented with comments that describe its functionality, enhancing readability and understanding for other developers. This approach reflects my commitment to effective communication in code and highlights how I design functions with maintainability and collaboration in mind.
 
-### SetProvider
+### setProvider
 
 This code sample is a React Context Provider, SetProvider, written in TypeScript, that manages the state for a set of exercise data in a workout application. It demonstrates my ability to create scalable and maintainable state management solutions using React's Context API.
 
