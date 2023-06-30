@@ -1,7 +1,7 @@
 # Snippet-Showoff
 A few code snippets to show off some of the work I have done.
 
-### claimsReducer
+### claimsTableReducer
 
 The claimsReducer code is a TypeScript function that showcases my ability to write clean, maintainable, and efficient code. It implements a reducer pattern to be used alongside React's [useReducer hook](https://react.dev/reference/react/useReducer), specifically for handling claims in an application.
 
