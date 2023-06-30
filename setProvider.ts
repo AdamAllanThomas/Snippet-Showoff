@@ -1,12 +1,12 @@
 import { useLazyQuery } from "@apollo/client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState, createContext } from "react";
 import uuid from "react-native-uuid";
 import { useAsyncStorage } from "../hooks";
 import { GET_SETS_ON_EXERCISE } from "../services/set-on-exercise.service";
 import { Exercise, ExerciseSet } from "../types";
 
-export const SetContext = React.createContext<{
+export const SetContext = createContext<{
   sets: ExerciseSet[];
   loading: boolean;
   error: Error | null;
