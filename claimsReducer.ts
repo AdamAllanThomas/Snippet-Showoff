@@ -35,7 +35,6 @@ export type ClaimAction =
       payload: AssignmentStatus;
     } // Action to change the active tab
   | { type: typeof ClaimActionType.CLEAR_CLAIMS } // Action to clear claims
-  | { type: "unknown" }; // Unknown action
 
 // Function to create the initial state for claims
 function createInitialClaimState(): ClaimsState {
