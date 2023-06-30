@@ -1,6 +1,14 @@
 # Snippet-Showoff
 A few code snippets to show off some of the work I have done.
 
+### claimsReducer
+
+The claimsReducer code is a TypeScript function that showcases my ability to write clean, maintainable, and efficient code. It implements a reducer pattern to be used alongside [React's useReducer hook](https://react.dev/reference/react/useReducer), specifically for handling claims in an application.
+
+The reducer follows best practices by using TypeScript's type annotations for function arguments and return values, ensuring type safety throughout the codebase. It effectively handles different actions such as setting claims, changing the active tab, and clearing claims, demonstrating my proficiency in managing complex state transitions.
+
+The code leverages the power of JavaScript's object spread syntax to update state immutably, preserving the integrity of the original data. By utilizing this approach, I ensure predictability and avoid unintended side effects.
+
 ### isPersonalBest
 
 This TypeScript function, isPersonalBest, highlights my ability to write clean, concise, and readable code that follows good software design principles. The function demonstrates my proficiency in TypeScript, using types for function arguments and return values to ensure type safety. It also clearly exhibits the Single Responsibility Principle as it is focused on determining whether a logged set is a new personal best for weight, one-repetition maximum (1RM), or volume.
